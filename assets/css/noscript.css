@@ -1,0 +1,14 @@
+/*
+	Noscript — Massively by HTML5 UP
+	Styles applied when JavaScript is disabled
+*/
+
+/* Animations off */
+#wrapper.is-preload #intro,
+#wrapper.is-preload #intro h1,
+#wrapper.is-preload #intro p,
+#wrapper.is-preload #intro .actions {
+	animation: none !important;
+	opacity: 1 !important;
+	transform: none !important;
+}

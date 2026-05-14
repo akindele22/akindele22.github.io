@@ -1,0 +1,29 @@
+// Massively by HTML5 UP — Bashorun Ahmed Portfolio
+// Main SASS entry point
+// Compile with: sass assets/sass/main.scss assets/css/main.css
+
+// Variables
+$accent:      #f2849e;
+$accent-dark: #e96d89;
+$bg:          #1d1f21;
+$bg-card:     rgba(255,255,255,0.025);
+$text:        #ccc;
+$text-light:  rgba(255,255,255,0.5);
+$border:      rgba(255,255,255,0.1);
+
+// Imports
+@import 'libs/vars';
+@import 'libs/functions';
+@import 'libs/mixins';
+@import 'base/reset';
+@import 'base/typography';
+@import 'components/button';
+@import 'components/form';
+@import 'components/icon';
+@import 'layout/header';
+@import 'layout/nav';
+@import 'layout/main';
+@import 'layout/footer';
+
+// Note: The compiled CSS is in assets/css/main.css
+// Edit that file directly or recompile from SASS.
