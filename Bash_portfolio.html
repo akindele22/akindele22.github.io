@@ -1,0 +1,578 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>Bashorun Ahmed | Data Scientist & Data Analyst</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Raleway:wght@200;300;400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #1b1f22;
+      --bg2: #212428;
+      --accent: #49bf9d;
+      --accent2: #3ca07d;
+      --text: #ffffff;
+      --text-muted: #9ea3ab;
+      --border: rgba(255,255,255,0.08);
+      --card-bg: #252a2e;
+      --overlay: rgba(0,0,0,0.5);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--accent2); }
+
+    /* ── INTRO PANEL ── */
+    #intro {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 4rem 2rem 6rem;
+      position: relative;
+      background: linear-gradient(160deg, #1a1f23 0%, #0e1518 100%);
+    }
+
+    #intro::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(73,191,157,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    #intro .avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--accent);
+      box-shadow: 0 0 40px rgba(73,191,157,0.3);
+      margin-bottom: 2rem;
+      animation: fadeDown 0.8s ease both;
+    }
+
+    #intro h1 {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+      animation: fadeDown 0.9s ease 0.1s both;
+    }
+
+    #intro p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      animation: fadeDown 1s ease 0.2s both;
+    }
+
+    #intro .scroll-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 2.5rem;
+      padding: 0.8rem 2rem;
+      border: 2px solid var(--accent);
+      border-radius: 3px;
+      color: var(--accent);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      transition: all 0.25s;
+      animation: fadeDown 1.1s ease 0.3s both;
+    }
+    #intro .scroll-btn:hover { background: var(--accent); color: #fff; }
+
+    /* ── NAV ── */
+    #header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(27,31,34,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 56px;
+    }
+
+    #header .logo {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      color: var(--text);
+      letter-spacing: 0.05em;
+    }
+
+    #header nav { display: flex; gap: 1.8rem; }
+    #header nav a {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    #header nav a:hover { color: var(--accent); }
+
+    #header .social-links { display: flex; gap: 1rem; }
+    #header .social-links a {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    #header .social-links a:hover { color: var(--accent); }
+
+    /* ── MAIN WRAPPER ── */
+    main { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+    /* ── SECTION TITLES ── */
+    .section-title {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin: 4rem 0 1.5rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 3px solid var(--accent);
+      display: inline-block;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── SKILLS STRIP ── */
+    #skills {
+      background: var(--card-bg);
+      border-left: 4px solid var(--accent);
+      padding: 1.4rem 1.8rem;
+      margin: 3rem 0 0;
+      border-radius: 0 4px 4px 0;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+    #skills strong { color: var(--text); font-family: 'Raleway', sans-serif; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; display: block; margin-bottom: 0.5rem; }
+
+    /* ── EDUCATION / EXPERIENCE TABLES ── */
+    .timeline { margin-top: 0.6rem; }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.5rem 2rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-item .role { font-weight: 700; color: var(--text); }
+    .timeline-item .org { color: var(--accent); font-size: 0.95rem; }
+    .timeline-item .period { color: var(--text-muted); font-size: 0.85rem; white-space: nowrap; text-align: right; font-style: italic; }
+    .timeline-item .deg { color: var(--text-muted); font-size: 0.95rem; }
+
+    ul.bullets {
+      list-style: none;
+      margin: 0.6rem 0 0;
+      padding: 0;
+    }
+    ul.bullets li {
+      position: relative;
+      padding-left: 1.4rem;
+      margin-bottom: 0.45rem;
+      color: var(--text-muted);
+      font-size: 0.97rem;
+    }
+    ul.bullets li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    ul.bullets.sub { margin-left: 1.4rem; }
+    ul.bullets.sub li::before { content: '–'; }
+
+    /* ── PROJECT GRID ── */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.8rem;
+      margin-top: 0.6rem;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+      border-color: var(--accent);
+    }
+    .project-card .thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+      background: #1a1e22;
+    }
+    .project-card .thumb-placeholder {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, #1e2428 0%, #252b2f 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+    }
+    .project-card .body {
+      padding: 1.3rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card h3 {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+      line-height: 1.35;
+    }
+    .project-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      flex: 1;
+      line-height: 1.6;
+    }
+    .project-card .view-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.45rem 1.1rem;
+      border: 1.5px solid var(--accent);
+      border-radius: 3px;
+      font-size: 0.78rem;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      transition: all 0.2s;
+      align-self: flex-start;
+    }
+    .project-card .view-btn:hover { background: var(--accent); color: #fff; }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--card-bg);
+      border-top: 4px solid var(--accent);
+      margin-top: 5rem;
+      padding: 3.5rem 2rem;
+      text-align: center;
+    }
+    #contact h2 {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 900;
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+    .contact-item strong {
+      display: block;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.3rem;
+    }
+    .contact-item span, .contact-item a { font-size: 0.95rem; }
+
+    .social-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 0.5rem; }
+    .social-row a {
+      padding: 0.4rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 3px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+    .social-row a:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      #header { padding: 0 1rem; }
+      #header .social-links { display: none; }
+      .project-grid { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 1fr; }
+      .timeline-item .period { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ───────────────── INTRO ───────────────── -->
+<section id="intro">
+  <img
+    src="https://akindele22.github.io/Bash_portfolio/bash.jpg"
+    alt="Portrait of Bashorun Ahmed"
+    class="avatar"
+    onerror="this.style.display='none'"
+  />
+  <h1>Bashorun Ahmed</h1>
+  <p>Data Scientist &amp; Data Analyst — turning raw data into decisions that move businesses forward.</p>
+  <a href="#header" class="scroll-btn">View Portfolio ↓</a>
+</section>
+
+<!-- ───────────────── NAV ───────────────── -->
+<header id="header">
+  <span class="logo">Bashorun Ahmed</span>
+  <nav>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="social-links">
+    <a href="https://github.com/akindele22" target="_blank">GitHub</a>
+    <a href="#contact">LinkedIn</a>
+  </div>
+</header>
+
+<!-- ───────────────── MAIN ───────────────── -->
+<main>
+
+  <!-- Skills Strip -->
+  <div id="skills">
+    <strong>Technical Skills</strong>
+    Python (Pandas · Scikit-learn · TensorFlow · Keras · PyTorch) &nbsp;·&nbsp; SQL &nbsp;·&nbsp; Power BI &nbsp;·&nbsp; Excel &nbsp;·&nbsp; Tableau &nbsp;·&nbsp; Time Series Forecasting &nbsp;·&nbsp; Sentiment Analysis &nbsp;·&nbsp; Reinforcement Learning &nbsp;·&nbsp; Deep Learning &nbsp;·&nbsp; NLP
+  </div>
+
+  <!-- EDUCATION -->
+  <h2 class="section-title">Education</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div>
+        <div class="role">B.Sc., Information Systems</div>
+        <div class="org">Federal University of Technology</div>
+      </div>
+      <div class="period">August 2023</div>
+    </div>
+    <div class="timeline-item">
+      <div>
+        <div class="role">Associate Degree, Computer Craft</div>
+        <div class="org">Lagos State Technical College</div>
+      </div>
+      <div class="period">September 2016</div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <h2 class="section-title" id="experience">Work Experience</h2>
+  <div class="timeline">
+
+    <div class="timeline-item" style="display:block; padding:1.2rem 0;">
+      <div class="role" style="font-size:1.05rem;">Data Scientist — Intellidane Cybernetics</div>
+      <div class="period" style="text-align:left; margin-bottom:0.7rem;">September 2020 – November 2022</div>
+      <ul class="bullets">
+        <li>Developed and implemented proprietary algorithmic trading strategies using machine learning models and statistical indicators.</li>
+        <li>Built an ML model predicting pneumonia severity (high / mid / low) using Neural Network, MLP, and Random Forest.</li>
+        <li>Performed predictive analysis on cryptocurrency prices and financial market movements using LSTM and Random Forest.</li>
+        <li>Imported, cleaned, and transformed data using Python, Excel, and Power BI to produce actionable dashboards and reports.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item" style="display:block; padding:1.2rem 0;">
+      <div class="role" style="font-size:1.05rem;">Freelance Data Scientist / Analyst</div>
+      <div class="period" style="text-align:left; margin-bottom:0.7rem;">December 2022 – Present</div>
+      <ul class="bullets">
+        <li>Conducted quantum computing research using QAOA for the Travelling Salesman Problem via Qiskit and IBM Quantum Computing.</li>
+        <li>Developed a mental health detection model for teenagers, adopted by 3 academic research teams.</li>
+        <li>Delivered a reinforcement learning-based network intrusion detection system (NSL-KDD dataset) achieving 94% F1-score.</li>
+        <li>Built an image classification model (CIFAR-10) using CNNs with 95% accuracy, deployed via Flask.</li>
+        <li>Designed an AI-powered anti-phishing Chrome extension using a Random Forest classifier for real-time URL analysis.</li>
+        <li>Developed a Sales Prediction and Analysis Dashboard with LSTM forecasting, hosted on Render with interactive visualisations.</li>
+        <li>Engineered a keystroke-based continuous authentication system improving authentication accuracy by 15%.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item" style="display:block; padding:1.2rem 0;">
+      <div class="role" style="font-size:1.05rem;">Senior Data Analyst — NextCounsel</div>
+      <div class="period" style="text-align:left; margin-bottom:0.7rem;">September 2023 – August 2025 &nbsp;|&nbsp; Lagos, Nigeria</div>
+      <ul class="bullets">
+        <li>Analysed platform data to identify inefficiencies, improving process automation by 15%.</li>
+        <li>Built predictive models and dashboards to guide strategic decisions, enhancing user engagement by 20%.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- PROJECTS -->
+  <h2 class="section-title" id="projects">Projects</h2>
+  <div class="project-grid">
+
+    <div class="project-card">
+      <div class="thumb-placeholder">🔐</div>
+      <div class="body">
+        <h3>Anti-Phishing Chrome Extension with Machine Learning</h3>
+        <p>AI-powered Chrome extension that detects and flags malicious URLs in real time using a Random Forest classifier. Features real-time detection, Flask API backend, and seamless Chrome integration.</p>
+        <a class="view-btn" href="https://github.com/akindele22/phishing-detector-ext" target="_blank">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img class="thumb" src="https://akindele22.github.io/Bash_portfolio/Picture5.png" alt="Sales Prediction Dashboard" onerror="this.style.display='none'">
+      <div class="body">
+        <h3>Sales Prediction &amp; Analysis Dashboard</h3>
+        <p>LSTM-powered sales forecasting dashboard with Flask backend and interactive visualisations. Deployed on Render with real-time forecasting, trend analysis, and collaborative workflow support.</p>
+        <a class="view-btn" href="https://github.com/akindele22" target="_blank">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img class="thumb" src="https://akindele22.github.io/Bash_portfolio/Picture3.png" alt="Inventory Management Dashboard" onerror="this.style.display='none'">
+      <div class="body">
+        <h3>Inventory Management Dashboard</h3>
+        <p>Compelling Power BI dashboard built on ABC and XYZ analysis for inventory classification. Used DAX to create custom measures supporting demand variability analysis and stock optimisation.</p>
+        <a class="view-btn" href="https://github.com/akindele22" target="_blank">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img class="thumb" src="https://akindele22.github.io/Bash_portfolio/Picture1.png" alt="Apple Greenhouse Emissions" onerror="this.style.display='none'">
+      <div class="body">
+        <h3>Apple's Greenhouse Emission Analysis</h3>
+        <p>Dashboard analysing Apple's carbon emission reduction from 2015–2022, compared against revenue and market capitalisation trends over the same period.</p>
+        <a class="view-btn" href="https://github.com/akindele22" target="_blank">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="thumb-placeholder">🛡️</div>
+      <div class="body">
+        <h3>Network Intrusion Detection System</h3>
+        <p>Reinforcement learning-based NIDS trained on the NSL-KDD dataset achieving 94% F1-score. Features intelligent threat detection, real-time monitoring of traffic anomalies, and scalable integration.</p>
+        <a class="view-btn" href="https://github.com/akindele22" target="_blank">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="thumb-placeholder">🤖</div>
+      <div class="body">
+        <h3>Hybrid Mental Health Support Chatbot</h3>
+        <p>AI-powered chatbot combining LSTM for NLP and DistilRoBERTa for sentiment analysis, delivering empathetic, emotion-aware mental health support conversations in real time.</p>
+        <a class="view-btn" href="https://github.com/akindele22" target="_blank">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="thumb-placeholder">🔫</div>
+      <div class="body">
+        <h3>Weapon Detection Model</h3>
+        <p>TensorFlow-based computer vision model detecting knives and machetes using InceptionV2, ResNet101, and ResNet50 architectures for comparative performance analysis.</p>
+        <a class="view-btn" href="https://github.com/akindele22" target="_blank">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="thumb-placeholder">₿</div>
+      <div class="body">
+        <h3>Crypto Algorithmic Trading Bot</h3>
+        <p>Proprietary algorithmic trading system implementing Simple Moving Average (200) and Exponential Moving Average (200) strategies for automated cryptocurrency trading decisions.</p>
+        <a class="view-btn" href="https://github.com/akindele22" target="_blank">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="thumb-placeholder">⌨️</div>
+      <div class="body">
+        <h3>Keystroke-Based Authentication System</h3>
+        <p>AI-driven continuous authentication leveraging keystroke dynamics with a Random Forest model. Improved authentication accuracy by 15% with real-time monitoring and local deployment.</p>
+        <a class="view-btn" href="https://github.com/akindele22" target="_blank">View Project</a>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- ───────────────── CONTACT ───────────────── -->
+<section id="contact">
+  <h2>Get In Touch</h2>
+  <div class="contact-grid">
+    <div class="contact-item">
+      <strong>Location</strong>
+      <span>Lagos, Nigeria</span>
+    </div>
+    <div class="contact-item">
+      <strong>GitHub</strong>
+      <a href="https://github.com/akindele22" target="_blank">akindele22</a>
+    </div>
+    <div class="contact-item">
+      <strong>Portfolio Source</strong>
+      <a href="https://github.com/akindele22/Bash_portfolio" target="_blank">Bash_portfolio</a>
+    </div>
+  </div>
+  <div class="social-row">
+    <a href="https://github.com/akindele22" target="_blank">GitHub</a>
+    <a href="#" target="_blank">LinkedIn</a>
+    <a href="#" target="_blank">Twitter</a>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; Bashorun Ahmed &nbsp;·&nbsp; Design inspired by <a href="https://html5up.net" target="_blank">HTML5 UP</a></p>
+</footer>
+
+</body>
+</html>
